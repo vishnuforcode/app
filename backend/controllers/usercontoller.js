@@ -28,7 +28,7 @@ export const register = async (req, res) => {
       fullname,
       username,
       password: hashedpassword,
-      profilephoto: gender === "male" ? maleprofilephoto : femaleprofilephoto ,
+      profilephoto: gender == "male" ? maleprofilephoto : femaleprofilephoto ,
       gender,
     });
     return res.status(200).json({message: "registered successfully , moj kar" , success:true});
@@ -94,7 +94,7 @@ export const login = async (req, res) => {
 export const logout = (req, res) => {
   try {
     return res.status(200).cookie("token"," " , { maxAge: 10 }).json({
-      message: "user log out",
+      message: "Logged out success",
     });
   } catch (error) {
     console.log(error);

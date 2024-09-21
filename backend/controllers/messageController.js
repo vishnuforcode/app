@@ -6,10 +6,10 @@ export const sendmessage = async (req,res)=>{
     try{
         const senderid = req.id;
         const reciverid = req.params.id ;
-        const  {message} = req.body
+       const {message} = req.body
         // console.log(senderid)
         // console.log(reciverid)
-        // console.log(message)
+        console.log(req.body)
 
         let gotconversation = await conversation.findOne({
             participants:{$all : [senderid ,reciverid]}
@@ -25,6 +25,7 @@ console.log(message)
             senderid,
             reciverid,
             message
+        
         });  
 
 
@@ -37,14 +38,16 @@ console.log(message)
 
 
         /// socket.io - start here //
-        return res.status(200).json({message: "message sent"})
+        return res.status(200).json({newmessage}
+        
+         )
     }catch(error){
         console.log(error)
     }
 }
 
 export const getmessage = async(req,res)=>{
-    try{
+    try{  
 
         const reciverid = req.params.id;
         const senderid = req.id
