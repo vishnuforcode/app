@@ -23,15 +23,17 @@ export const register = async (req, res) => {
     // profile photo
     const maleprofilephoto = `https://avatar.iran.liara.run/public/boy?username=${username}`;
     const femaleprofilephoto = `https://avatar.iran.liara.run/public/girl?username=${username}`;
+    // gender === "Male" ? maleprofilephoto : femaleprofilephoto ,
+  
 
     await User.create({
       fullname,
       username,
       password: hashedpassword,
-      profilephoto: gender == "male" ? maleprofilephoto : femaleprofilephoto ,
+      profilephoto: gender === "Male" ? maleprofilephoto : femaleprofilephoto ,
       gender,
     });
-    return res.status(200).json({message: "registered successfully , moj kar" , success:true});
+    return res.status(200).json({message: "// moj kar" , success:true});
   } catch (error) {
     console.log(error);
   }

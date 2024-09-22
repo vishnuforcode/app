@@ -1,5 +1,5 @@
 import express from 'express'
-const app = express()
+
 import dotenv from 'dotenv'
 // const db = require('./config/db')
 import bodyParser from 'body-parser'
@@ -10,6 +10,7 @@ import userroute from './routes/userroute.js'
 import messageroute from './routes/messageroute.js'
 import cors from 'cors'
 // const router = require('./routes/userroute')
+import {app ,server} from "./socket/socket.js"
 app.use(cookieparser());
 dotenv.config({}) 
 
@@ -73,7 +74,7 @@ app.use("/api/v1/user" , userroute )
 app.use("/api/v1/message" ,messageroute)
 // http://localhost:3000/api/v1/user/register
 
-app.listen(Port , ()=>{
+server.listen(Port , ()=>{
     connectDB();
     console.log(`app is listening on :${Port}`)
 })   
